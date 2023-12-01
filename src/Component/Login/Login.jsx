@@ -13,13 +13,13 @@ export default function Login() {
   };
 
   function showPassword() {
-    document.getElementById("password").type="text"
+    document.getElementById("password").type = "text"
     document.getElementById("show").classList.add("d-none")
     document.getElementById("hide").classList.remove("d-none")
   }
 
   function hidePassword() {
-    document.getElementById("password").type="password"
+    document.getElementById("password").type = "password"
     document.getElementById("show").classList.remove("d-none")
     document.getElementById("hide").classList.add("d-none")
   }
@@ -43,13 +43,12 @@ export default function Login() {
     onSubmit: (values) => {
       setLoading(true)
       axios.post(`${BaseUrl}/auth/signin`, values).then((data) => {
-
         localStorage.setItem("token", data.data.token)
-
         navigate("/")
         SaveUserData()
         setLoading(false)
         notify("success", 'success')
+  
 
       }).catch((err) => {
 
@@ -73,7 +72,7 @@ export default function Login() {
           </div> : ""}
 
           <label htmlFor="password">Password :</label>
-          <input  onBlur={loginFormik.handleBlur} value={loginFormik.values.password} onChange={loginFormik.handleChange} type="password" className='form-control my-3' name='password' id='password' />
+          <input onBlur={loginFormik.handleBlur} value={loginFormik.values.password} onChange={loginFormik.handleChange} type="password" className='form-control my-3' name='password' id='password' />
           <label id='show' onClick={showPassword} className='btn btn-sm btn-dark'>Show Password</label>
           <label id='hide' onClick={hidePassword} className='btn btn-sm btn-dark d-none'>Hide Password</label>
 

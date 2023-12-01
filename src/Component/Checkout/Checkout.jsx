@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { BaseUrl } from '../../utils/BaseUrl.js'
 import { toast } from 'react-toastify';
 
@@ -15,7 +15,7 @@ export default function Checkout() {
     toast[type](msg)
   };
 
-  let { deleteCart, setCartItems } = useContext(CartContext)
+  let { deleteCart, cartItems,setCartItems } = useContext(CartContext)
 
 
   function cashPayment() {
@@ -30,7 +30,7 @@ export default function Checkout() {
         "token": localStorage.getItem("token")
       }
     }).then((data) => {
-      localStorage.setItem("cartNumbers", 0)
+      console.log(cartItems);
       setCartItems(0)
       sessionStorage.clear()
       notify("success", "success")
@@ -53,14 +53,12 @@ export default function Checkout() {
     }, {
       headers: { "token": localStorage.getItem("token") }
     }).then((data) => {
-      localStorage.setItem("cartNumbers", 0)
       setCartItems(0)
       sessionStorage.clear()
       notify("success", "success")
       deleteCart()
       window.location.href=data.data.session.url
     }).catch((err) => {
-      console.log(err);
       notify("There is no cart for this user", "error")
     })
   }

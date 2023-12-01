@@ -22,7 +22,7 @@ export default function CartItems() {
         sessionStorage.setItem(`add-${id}`, "d-block")
         sessionStorage.setItem(`remove-${id}`, "d-none")
 
-      
+
     }
 
 
@@ -86,26 +86,26 @@ export default function CartItems() {
             <div className="container">
                 {cartProduct?.map((e) => {
 
-                    return  <div className='row justify-content-center align-items-center border border-3 border-dark rounded-5 my-3 p-3'>
-                            <div className='col-md-2'>
+                    return <div className='row justify-content-center align-items-center border border-3 border-dark rounded-5 my-3 p-3'>
+                        <div className='col-md-2'>
                             <Link to={"/productdetails/" + e.product._id}>
                                 <img src={e.product.imageCover} className='w-100 border rounded-5 my-3' alt="" />
                             </Link>
-                            </div>
-                            <div className="col-md-8">
-                                <h2 >{e.product.title}</h2>
-                                <p className='text-main fs-4'>Price : {e.price}</p>
-                                <button className='btn btn-success mx-3' onClick={() => updateCountNumber(e.product._id, e.count + 1)}><i class="fa-solid fa-plus"></i></button>
-                                <span className='h3'>{e.count}</span>
-                                <button className='btn btn-danger mx-3' onClick={() => updateCountNumber(e.product._id, e.count - 1)}><i class="fa-solid fa-minus"></i></button>
-
-                            </div>
-                            <button className='btn btn-danger w-50 my-2'
-                                onClick={() => deleteCart(e.product._id)} >Remove From Cart
-                                <i class="fa-solid fa-trash mx-2"></i></button>
+                        </div>
+                        <div className="col-md-8">
+                            <h2 >{e.product.title}</h2>
+                            <p className='text-main fs-4'>Price : {e.price}</p>
+                            <button className='btn btn-success mx-3' onClick={() => updateCountNumber(e.product._id, e.count + 1)}><i class="fa-solid fa-plus"></i></button>
+                            <span className='h3'>{e.count}</span>
+                            <button className='btn btn-danger mx-3' onClick={() => updateCountNumber(e.product._id, e.count - 1)}><i class="fa-solid fa-minus"></i></button>
 
                         </div>
-                
+                        <button className='btn btn-danger w-50 my-2'
+                            onClick={() => deleteCart(e.product._id)} >Remove From Cart
+                            <i class="fa-solid fa-trash mx-2"></i></button>
+
+                    </div>
+
 
                 })}
             </div>

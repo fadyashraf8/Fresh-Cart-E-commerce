@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import logo from '../../imgs/freshcart-logo.svg'
 import { Link, NavLink } from 'react-router-dom'
 import { AuthContext } from '../../Context/AuthContext.js'
+import { CartContext } from '../../Context/CartContext.js'
 
 export default function Navbar() {
 
+  
   let { userData, logOut } = useContext(AuthContext)
-
-  let cartNumber = localStorage.getItem("cartNumbers")
+  let { cartItems } = useContext(CartContext)
 
 
   return (
@@ -53,7 +54,7 @@ export default function Navbar() {
                     Cart
                     <i className="fa-solid fa-cart-shopping"></i>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                      {cartNumber}
+                      {cartItems}
                       <span className="visually-hidden">unread messages</span>
                     </span>
                   </button>
@@ -64,7 +65,7 @@ export default function Navbar() {
                   <button type="button" className="btn  position-relative">
                     WishList
                     <i className="fa-solid fa-heart mx-2"></i>
-                  
+
                   </button>
                 </Link>
               </li>

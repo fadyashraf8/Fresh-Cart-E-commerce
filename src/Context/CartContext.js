@@ -11,11 +11,11 @@ export let CartContext = createContext()
 export default function CartContextProvider({ children }) {
 
 
-    let [cartData, setCartData] = useState(null)
-    let [cartProduct, setCartProduct] = useState(null)
-    let [cartItems, setCartItems] = useState(0)
-    let [wishListProduct, setWishListProduct] = useState(null)
-    let [cartId, setCartId] = useState(null)
+    const [cartData, setCartData] = useState(null)
+    const [cartProduct, setCartProduct] = useState(null)
+    const [cartItems, setCartItems] = useState(0)
+    const [wishListProduct, setWishListProduct] = useState(null)
+    const [cartId, setCartId] = useState(null)
 
 
 
@@ -30,7 +30,7 @@ export default function CartContextProvider({ children }) {
             }
         }).then((data) => {
             setWishListProduct(data.data.data)
-      
+
 
         }).catch((err) => {
             notify("error!", 'error')
@@ -55,9 +55,9 @@ export default function CartContextProvider({ children }) {
             headers: { "token": localStorage.getItem("token") }
         }).then((data) => {
             notify(data.data.message, "success")
-        
+
             getWishListItems()
-       
+
 
 
         }).catch((err) => {
@@ -68,7 +68,7 @@ export default function CartContextProvider({ children }) {
     }
 
 
-  
+
 
     function deleteCart() {
         axios.delete(`${BaseUrl}/cart`, {
@@ -90,7 +90,6 @@ export default function CartContextProvider({ children }) {
             setCartData(data.data)
             setCartProduct(data.data.data.products)
             setCartItems(data.data.numOfCartItems)
-            localStorage.setItem("cartNumbers", data.data.numOfCartItems)
             setCartId(data.data.data._id);
             localStorage.setItem("cartId", data.data.data._id)
 
@@ -110,9 +109,8 @@ export default function CartContextProvider({ children }) {
         }).then((data) => {
             notify(data.data.message, "success")
             setCartItems(data.data.numOfCartItems)
-            localStorage.setItem("cartNumbers", data.data.numOfCartItems)
-
-
+       
+            getCartItems()
 
         }).catch((err) => {
             notify(err.response.data.message, "error")
@@ -124,20 +122,19 @@ export default function CartContextProvider({ children }) {
             headers: { "token": localStorage.getItem("token") }
         }).then((data) => {
             notify("Removed From Cart Successfully", "success")
-            getCartItems()
             setCartItems(data.data.numOfCartItems)
-            localStorage.setItem("cartNumbers", data.data.numOfCartItems)
-
+            getCartItems()
 
 
         }).catch((err) => {
 
-            getCartItems()
+            notify(err.response.data.message, "error")
+
 
         })
     }
 
-    return <CartContext.Provider value={{ addToCart, getCartItems, cartData, setCartData, cartProduct, deleteFromCart, cartItems, addToWishList, getWishListItems, wishListProduct, deleteFromWishList, cartId, setCartItems,deleteCart }}>
+    return <CartContext.Provider value={{ addToCart, getCartItems, cartData, setCartData, cartProduct, deleteFromCart, cartItems, addToWishList, getWishListItems, wishListProduct, deleteFromWishList, cartId, setCartItems, deleteCart }}>
         {children}
     </CartContext.Provider>
 }
