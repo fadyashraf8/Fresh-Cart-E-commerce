@@ -15,6 +15,7 @@ export default function CartContextProvider({ children }) {
     const [cartProduct, setCartProduct] = useState(null)
     const [cartItems, setCartItems] = useState(0)
     const [wishListProduct, setWishListProduct] = useState(null)
+    const [wishListNumber, setWishListNumber] = useState(0)
     const [cartId, setCartId] = useState(null)
 
 
@@ -30,7 +31,8 @@ export default function CartContextProvider({ children }) {
             }
         }).then((data) => {
             setWishListProduct(data.data.data)
-
+    
+            setWishListNumber(data.data.count)
 
         }).catch((err) => {
             notify("error!", 'error')
@@ -109,7 +111,7 @@ export default function CartContextProvider({ children }) {
         }).then((data) => {
             notify(data.data.message, "success")
             setCartItems(data.data.numOfCartItems)
-       
+
             getCartItems()
 
         }).catch((err) => {
@@ -134,7 +136,7 @@ export default function CartContextProvider({ children }) {
         })
     }
 
-    return <CartContext.Provider value={{ addToCart, getCartItems, cartData, setCartData, cartProduct, deleteFromCart, cartItems, addToWishList, getWishListItems, wishListProduct, deleteFromWishList, cartId, setCartItems, deleteCart }}>
+    return <CartContext.Provider value={{ addToCart, getCartItems, cartData, setCartData, cartProduct, deleteFromCart, cartItems, addToWishList, getWishListItems, wishListProduct, deleteFromWishList, cartId, setCartItems, deleteCart,wishListNumber }}>
         {children}
     </CartContext.Provider>
 }
