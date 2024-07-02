@@ -7,13 +7,12 @@ export let AuthContext = createContext()
 
 export default function AuthContextProvider({ children }) {
 
-    let [userData, setUserData] = useState(null)
+    const [userData, setUserData] = useState(null)
 
     function SaveUserData() {
         let token = localStorage.getItem("token")
         let decodedToken = jwtDecode(token)
         setUserData(decodedToken)
-
     }
 
     function logOut() {

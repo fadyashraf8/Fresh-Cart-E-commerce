@@ -70,7 +70,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item me-1">
-                <Link className="nav-link" onClick={logOut}>Logout</Link>
+                  
               </li>
             </ul> : <ul className="navbar-nav  mb-2 mb-lg-0">
               <li className="nav-item">

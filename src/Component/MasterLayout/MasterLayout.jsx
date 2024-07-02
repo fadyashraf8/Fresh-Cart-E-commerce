@@ -7,10 +7,10 @@ export default function MasterLayout() {
 
   return (
     <>
-    <Navbar/>
-    <div className='container'>
-        <Outlet/>
-    </div>
+      <Navbar />
+      <div className='container'>
+        <Outlet />
+      </div>
     </>
   )
 }

@@ -58,9 +58,6 @@ function App() {
         { path: 'resetCode', element: <InverseProtectedRouter><ResetCode /></InverseProtectedRouter> },
         { path: 'resetPassword', element: <InverseProtectedRouter><ResetPassword /></InverseProtectedRouter> },
         { path: '*', element: <NotFound /> },
-
-
-
       ]
     }
   ])

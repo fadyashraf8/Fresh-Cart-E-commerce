@@ -8,31 +8,31 @@ import { toast } from 'react-toastify';
 export default function Register() {
 
   function showPassword() {
-    document.getElementById("password").type="text"
+    document.getElementById("password").type = "text"
     document.getElementById("show").classList.add("d-none")
     document.getElementById("hide").classList.remove("d-none")
   }
 
   function hidePassword() {
-    document.getElementById("password").type="password"
+    document.getElementById("password").type = "password"
     document.getElementById("show").classList.remove("d-none")
     document.getElementById("hide").classList.add("d-none")
   }
 
 
   function showRepassword() {
-    document.getElementById("rePassword").type="text"
+    document.getElementById("rePassword").type = "text"
     document.getElementById("showw").classList.add("d-none")
     document.getElementById("hidee").classList.remove("d-none")
   }
 
   function hideRepassword() {
-    document.getElementById("rePassword").type="password"
+    document.getElementById("rePassword").type = "password"
     document.getElementById("showw").classList.remove("d-none")
     document.getElementById("hidee").classList.add("d-none")
   }
 
-  const notify = (msg,type) => {
+  const notify = (msg, type) => {
     toast[type](msg)
   };
 
@@ -61,13 +61,13 @@ export default function Register() {
       setLoading(true)
       axios.post(`${BaseUrl}/auth/signup`, values).then((data) => {
 
-          navigate("/login")
-          setLoading(false)
-          notify("success",'success')
-  
+        navigate("/login")
+        setLoading(false)
+        notify("success", 'success')
+
       }).catch((err) => {
-          setLoading(false)
-          notify(err.response.data.message,"error")
+        setLoading(false)
+        notify(err.response.data.message, "error")
       })
     }
   })
@@ -92,7 +92,7 @@ export default function Register() {
 
           <label htmlFor="password" >Password :</label>
           <input onBlur={registerFormik.handleBlur} value={registerFormik.values.password} onChange={registerFormik.handleChange} type="password" className='form-control my-3' name='password' id='password' />
-
+          <p className='fs-2 border border-2 rounded-5 text-center'>Use This Password : Pass123</p>
           <label id='show' onClick={showPassword} className='btn btn-sm btn-dark'>Show Password</label>
           <label id='hide' onClick={hidePassword} className='btn btn-sm btn-dark d-none'>Hide Password</label>
           {registerFormik.errors.password && registerFormik.touched.password ? <div className='alert alert-danger'>

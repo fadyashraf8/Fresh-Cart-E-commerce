@@ -52,8 +52,8 @@ export default function Login() {
 
       }).catch((err) => {
 
-        setLoading(false)
-        notify(err.response.data.message, "error")
+          setLoading(false)
+          notify(err.response.data.message, "error")
       })
     }
   })
@@ -72,7 +72,7 @@ export default function Login() {
           </div> : ""}
 
           <label htmlFor="password">Password :</label>
-          <input onBlur={loginFormik.handleBlur} value={loginFormik.values.password} onChange={loginFormik.handleChange} type="password" className='form-control my-3' name='password' id='password' />
+          <input onBlur={loginFormik.handleBlur} value={loginFormik.values.password} onChange={loginFormik.handleChange} type="password" className='form-control my-3' name='password' id='password' /> 
           <label id='show' onClick={showPassword} className='btn btn-sm btn-dark'>Show Password</label>
           <label id='hide' onClick={hidePassword} className='btn btn-sm btn-dark d-none'>Hide Password</label>
 
