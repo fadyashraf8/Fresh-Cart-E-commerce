@@ -6,7 +6,7 @@ import { CartContext } from '../../Context/CartContext.js'
 
 export default function Navbar() {
 
-  
+
   let { userData, logOut } = useContext(AuthContext)
   let { cartItems } = useContext(CartContext)
 
@@ -69,8 +69,8 @@ export default function Navbar() {
                   </button>
                 </Link>
               </li>
-              <li className="nav-item me-1">
-                  
+              <li className="nav-item mx-2">
+                <button onClick={logOut} className='btn btn-outline-dark'>Log Out</button>
               </li>
             </ul> : <ul className="navbar-nav  mb-2 mb-lg-0">
               <li className="nav-item">
