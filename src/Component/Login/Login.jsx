@@ -48,12 +48,12 @@ export default function Login() {
         SaveUserData()
         setLoading(false)
         notify("success", 'success')
-  
+
 
       }).catch((err) => {
 
-          setLoading(false)
-          notify(err.response.data.message, "error")
+        setLoading(false)
+        notify(err.response.data.message, "error")
       })
     }
   })
@@ -92,6 +92,8 @@ export default function Login() {
         </form>
       </div>
 
+
+     
     </>
   )
 }

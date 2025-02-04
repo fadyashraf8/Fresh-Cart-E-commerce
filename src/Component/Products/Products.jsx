@@ -27,7 +27,14 @@ export default function Products() {
       {loading ? <Loading /> : null}
       <div className='container'>
         <div className="row">
-          <Product products={products} />
+
+          {products.map((e) => {
+
+            return <Product e={e} />
+          })}
+
+
+
         </div>
       </div>
     </>

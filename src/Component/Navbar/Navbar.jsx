@@ -3,6 +3,7 @@ import logo from '../../imgs/freshcart-logo.svg'
 import { Link, NavLink } from 'react-router-dom'
 import { AuthContext } from '../../Context/AuthContext.js'
 import { CartContext } from '../../Context/CartContext.js'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 export default function Navbar() {
 
@@ -18,7 +19,7 @@ export default function Navbar() {
       <nav className="navbar navbar-expand-lg bg-main-light p-3">
         <div className="container">
           <NavLink className="navbar-brand" to="/">
-            <img src={logo} alt="" />
+            <LazyLoadImage src={logo} alt="" />
           </NavLink>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

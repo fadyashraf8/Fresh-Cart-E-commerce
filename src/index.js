@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
 
-import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js'
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js'  
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';

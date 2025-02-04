@@ -68,40 +68,6 @@ export default function CartContextProvider({ children }) {
 
         })
     }
-
-
-
-
-    function deleteCart() {
-        axios.delete(`${BaseUrl}/cart`, {
-            headers: {
-                "token": localStorage.getItem("token")
-            }
-        }).then((data) => {
-            console.log(data.data);
-        }).catch((err) => {
-        })
-    }
-
-    function getCartItems() {
-        axios.get(`${BaseUrl}/cart`, {
-            headers: {
-                "token": localStorage.getItem("token")
-            }
-        }).then((data) => {
-            setCartData(data.data)
-            setCartProduct(data.data.data.products)
-            setCartItems(data.data.numOfCartItems)
-            setCartId(data.data.data._id);
-            localStorage.setItem("cartId", data.data.data._id)
-
-
-        }).catch((err) => {
-            notify(err.response.data, 'error')
-
-        })
-    }
-
     function addToCart(id) {
 
         axios.post(`${BaseUrl}/cart`, {
@@ -135,6 +101,40 @@ export default function CartContextProvider({ children }) {
 
         })
     }
+
+
+
+    function deleteCart() {
+        axios.delete(`${BaseUrl}/cart`, {
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        }).then((data) => {
+            console.log(data.data);
+        }).catch((err) => {
+        })
+    }
+
+    function getCartItems() {
+        axios.get(`${BaseUrl}/cart`, {
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        }).then((data) => {
+            setCartData(data.data)
+            setCartProduct(data.data.data.products)
+            setCartItems(data.data.numOfCartItems)
+            setCartId(data.data.data._id);
+            localStorage.setItem("cartId", data.data.data._id)
+
+
+        }).catch((err) => {
+            notify(err.response.data, 'error')
+
+        })
+    }
+
+
 
     return <CartContext.Provider value={{ addToCart, getCartItems, cartData, setCartData, cartProduct, deleteFromCart, cartItems, addToWishList, getWishListItems, wishListProduct, deleteFromWishList, cartId, setCartItems, deleteCart,wishListNumber }}>
         {children}

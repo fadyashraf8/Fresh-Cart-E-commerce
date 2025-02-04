@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { BaseUrl } from '../../utils/BaseUrl.js'
 import { Link } from 'react-router-dom'
 import Loading from '../Loading/Loading.jsx'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 export default function Brands() {
 
@@ -40,7 +41,7 @@ export default function Brands() {
             return <div className="col-md-4  ">
               <Link to={'/branddetails/' + e._id}>
                 <div className='border border-dark  border-2 rounded-3 shadow text-center'>
-                  <img src={e.image} className='w-100' alt="" srcset="" />
+                  <LazyLoadImage src={e.image} className='w-100' alt="" srcset="" />
 
                 </div>
               </Link>

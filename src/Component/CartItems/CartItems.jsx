@@ -6,6 +6,7 @@ import Loading from '../Loading/Loading.jsx';
 import { Link } from 'react-router-dom';
 import { BaseUrl } from '../../utils/BaseUrl.js';
 import axios from 'axios';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function CartItems() {
     let { getCartItems, cartData, cartProduct, cartItems, deleteFromCart } = useContext(CartContext)
@@ -89,7 +90,7 @@ export default function CartItems() {
                     return <div className='row justify-content-center align-items-center border border-3 border-dark rounded-5 my-3 p-3'>
                         <div className='col-md-2'>
                             <Link to={"/productdetails/" + e.product._id}>
-                                <img src={e.product.imageCover} className='w-100 border rounded-5 my-3' alt="" />
+                                <LazyLoadImage src={e.product.imageCover} className='w-100 border rounded-5 my-3' alt="" />
                             </Link>
                         </div>
                         <div className="col-md-8">

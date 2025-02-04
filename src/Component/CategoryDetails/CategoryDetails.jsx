@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { BaseUrl } from '../../utils/BaseUrl.js'
 import Loading from '../Loading/Loading.jsx'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 export default function CategoryDetails() {
 
@@ -26,7 +27,7 @@ export default function CategoryDetails() {
             <div className="container my-5">
         <div className="row justify-content-center align-items-center">
             <div className="col-md-6  ">
-                <img src={catDetails?.image} className='w-100 border border-2 rounded-3 border-dark' alt="" srcset="" />
+                <LazyLoadImage src={catDetails?.image} className='w-100 border border-2 rounded-3 border-dark' alt="" srcset="" />
             </div>
             <div className="col-md-6  ">
                 

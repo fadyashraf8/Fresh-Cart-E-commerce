@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../../Context/CartContext.js'
 import Loading from '../Loading/Loading.jsx'
 import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 export default function WishList() {
 
@@ -46,7 +47,7 @@ export default function WishList() {
                     <div className='row justify-content-center align-items-center border border-3 border-dark rounded-5 my-3 p-3'>
                         <div className='col-md-2'>
                             <Link to={'/productdetails/' + e._id}>
-                                <img src={e.imageCover} className='w-100 border rounded-5 my-3' alt="" />
+                                <LazyLoadImage src={e.imageCover} className='w-100 border rounded-5 my-3' alt="" />
                             </Link>
 
                         </div>

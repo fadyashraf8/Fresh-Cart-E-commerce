@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 
 import { BaseUrl } from '../../utils/BaseUrl.js'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function CategorySlider() {
 
@@ -39,7 +40,7 @@ export default function CategorySlider() {
             {categories.map((e)=>{
 
            return <div key={e._id}>
-            <img src={e.image} alt="" className='w-100' height={200} />
+            <LazyLoadImage src={e.image} alt="" className='w-100' height={200} />
             <h6>{e.name}</h6>
            </div>
             }) }

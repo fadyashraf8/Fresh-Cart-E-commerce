@@ -60,13 +60,15 @@ export default function Register() {
     onSubmit: (values) => {
       setLoading(true)
       axios.post(`${BaseUrl}/auth/signup`, values).then((data) => {
-
+        
         navigate("/login")
         setLoading(false)
         notify("success", 'success')
 
       }).catch((err) => {
         setLoading(false)
+        console.log(err.response.data.message);
+        
         notify(err.response.data.message, "error")
       })
     }
